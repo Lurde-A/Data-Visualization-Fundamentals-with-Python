@@ -1,1 +1,106 @@
+                                      INTRODUCTION
+  1. Before we start working with Matplotlib, we need to import it into our Python environment. Paste the following code into script.py:
+from matplotlib import pyplot as plt
+This will import the plotting functions from matplotlib, and make them accessible using the shorter name plt. Most of the commands we will learn will start with plt. going forward.
+//
+from matplotlib import pyplot as plt
 
+                                      BASIC LINE PLOT
+  2. We are going to make a simple graph representing someone’s spending on lunch over the past week. First, define two lists, days and money_spent, that contain the following integers:
+Days	Money Spent
+0	    10
+1	    12
+2	    12
+3	    10
+4	    14
+5	    22
+6	    24
+Make sure to scroll to the bottom of the table to see all the rows of data!
+//
+days = [0,1,2,3,4,5,6]
+money_spent = [10,12,12,10,14,22,24]
+  3. Plot days on the x-axis and money_spent on the y-axis using plt.plot().
+  4. Show the plot using plt.show().
+//
+plt.plot(days, money_spent)
+plt.show()
+
+                                      BASIC LINE PLOT II
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+  5. We have defined lists called time, revenue, and costs. Plot revenue vs time.
+//
+time = [0, 1, 2, 3, 4]
+revenue = [200, 400, 650, 800, 850]
+costs = [150, 500, 550, 550, 560]
+plt.plot(time, revenue)
+plt.show()
+  6. Plot costs vs time on the same plot as the last line.
+  7. Show the plot using plt.show().
+//
+time = [0, 1, 2, 3, 4]
+revenue = [200, 400, 650, 800, 850]
+costs = [150, 500, 550, 550, 560]
+plt.plot(time, revenue)
+plt.show()
+plt.plot(time, costs)
+plt.show()
+
+                                      LINESTYLES
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+time = [0, 1, 2, 3, 4]
+revenue = [200, 400, 650, 800, 850]
+costs = [150, 500, 550, 550, 560]
+  8. Plot revenue vs. time as a purple ('purple'), dashed ('--') line.
+//
+plt.plot(time, revenue, color='purple', linestyle='--')
+plt.show()
+  9. Plot costs vs. time as a line with the HEX color #82edc9 and square ('s') markers.
+//
+plt.plot(time, costs, color='#82edc9', marker='s')
+plt.show()
+
+                                      AXIS AND LABELS
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+x = range(12)
+y = [3000, 3005, 3010, 2900, 2950, 3050, 3000, 3100, 2980, 2980, 2920, 3010]
+plt.plot(x, y)
+plt.show()
+  10. We have plotted a line representing someone’s spending on coffee over the past 12 years. Run the code to see the resulting plot.
+  11. Let’s modify the axes to zoom in a bit more on our line chart. Use plt.axis() to modify the axes so that the x-axis goes from 0 to 12, and the y-axis goes from 2900 to 3100.
+//
+x = range(12)
+y = [3000, 3005, 3010, 2900, 2950, 3050, 3000, 3100, 2980, 2980, 2920, 3010]
+plt.plot(x, y)
+plt.axis([0, 12, 2900, 3100])
+plt.show()
+
+                                      LABELING THE AXES
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+x = range(12)
+y = [3000, 3005, 3010, 2900, 2950, 3050, 3000, 3100, 2980, 2980, 2920, 3010]
+plt.plot(x, y)
+plt.axis([0, 12, 2900, 3100])
+plt.show()
+  12. Label the x-axis 'Time'.
+  13. Label the y-axis 'Dollars spent on coffee'.
+  14. Add the title 'My Last Twelve Years of Coffee Drinking'.
+//
+x = range(12)
+y = [3000, 3005, 3010, 2900, 2950, 3050, 3000, 3100, 2980, 2980, 2920, 3010]
+plt.plot(x, y)
+plt.axis([0, 12, 2900, 3100])
+plt.xlabel('Time')
+plt.ylabel('Dollars spent on coffee')
+plt.title('My Last Twelve Years of Coffee Drinking')
+plt.show()
+
+                                      SUBPLOTS
+  15. 
