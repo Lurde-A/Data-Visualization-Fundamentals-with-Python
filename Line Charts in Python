@@ -103,4 +103,205 @@ plt.title('My Last Twelve Years of Coffee Drinking')
 plt.show()
 
                                       SUBPLOTS
-  15. 
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+months = range(12)
+temperature = [36, 36, 39, 52, 61, 72, 77, 75, 68, 57, 48, 48]
+flights_to_hawaii = [1200, 1300, 1100, 1450, 850, 750, 400, 450, 400, 860, 990, 1000]
+  15. We have defined the lists months, temperature, and flights_to_hawaii for you. Using the plt.subplot command, plot temperature vs months in the left box of a figure that has 
+1 row with 2 columns.
+//
+plt.subplot(1,2,1)
+plt.plot(months, temperature)
+  16. Plot flights_to_hawaii vs temperature in the same figure, to the right of your first plot. Add the parameter "o" to the end of your call to plt.plot to make the plot into 
+a scatterplot, if you want!
+  17. Show the plots.
+//
+plt.subplot(1,2,2)
+plt.plot(temperature, flights_to_hawaii, "o")
+plt.show()
+
+                                      SUBPLOTS PART II
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+x = range(7)
+straight_line = [0, 1, 2, 3, 4, 5, 6]
+parabola = [0, 1, 4, 9, 16, 25, 36]
+cubic = [0, 1, 8, 27, 64, 125, 216]
+  18. We are going to create a figure that has two rows of subplots. It should have:
+- one subplot in the top row
+- two subplots in the bottom row
+Start by using the subplot method to instantiate the subplot in the top row (the box with the star in it).
+//
+plt.subplot(2, 1, 1)
+  19. Plot straight_line vs x in this subplot you’ve selected.
+//
+plt.plot(x, straight_line)
+  20. Now, use the plt.subplot() command to select the box in the first column of the second row (the one with a square in it). Plot parabola vs x in this box.
+//
+plt.subplot(2,2,3)
+plt.plot(x, parabola)
+  21. Now, use the plt.subplot() command to select the box in the second column of the second row (the one with a triangle in it). Plot cubic vs x in this box.
+//
+plt.subplot(2,2,4)
+plt.plot(x, cubic)
+  22. Increase the spacing between horizontal subplots to 0.35 and the bottom margin to 0.2.
+//
+plt.subplots_adjust(wspace = 0.35, bottom = 0.2)
+plt.show()
+
+                                      LEGENDS
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+months = range(12)
+hyrule = [63, 65, 68, 70, 72, 72, 73, 74, 71, 70, 68, 64]
+kakariko = [52, 52, 53, 68, 73, 74, 74, 76, 71, 62, 58, 54]
+gerudo = [98, 99, 99, 100, 99, 100, 98, 101, 101, 97, 98, 99]
+plt.plot(months, hyrule)
+plt.plot(months, kakariko)
+plt.plot(months, gerudo)
+#create your legend here
+plt.show()
+  23. We have plotted three lines for you. They represent the temperatures over the past year in three locations:
+Hyrule (hyrule)
+Kakariko (kakariko)
+Gerudo Valley (gerudo)
+Create a list of strings containing "Hyrule", "Kakariko", and "Gerudo Valley", and store it in a variable called legend_labels.
+//
+legend_labels = ["Hyrule", "Kakariko", "Gerudo Valley"]
+  24. Create a legend for the graph by feeding in legend_labels into plt.legend().
+//
+plt.legend(legend_labels)
+plt.show()
+  25. Set the legend to be at the lower center of the chart
+//
+plt.legend(legend_labels, loc=8)
+plt.show()
+
+                                      MODIFY TICKS
+  26. Let’s imagine we are working for a company called Dinnersaur, that delivers dinners to people who don’t want to cook. Dinnersaur recently started a new service that is 
+subscription-based, where users sign up for a whole year of meals, instead of buying meals on-demand. We have plotted a line for you in the editor representing the proportion of 
+users who have switched over to this new service since it was rolled out in January. First, save the set of axes in a variable called ax. We will use ax to set the x- and y-ticks 
+and labels to make this graph easier to read.
+//
+plt.xlabel("Months")
+plt.ylabel("Conversion")
+ax = plt.subplot()
+plt.plot(months, conversion)
+plt.show()
+  27. Using ax, set the x-ticks to be the months list.
+//
+plt.xlabel("Months")
+plt.ylabel("Conversion")
+ax = plt.subplot()
+plt.plot(months, conversion)
+ax.set_xticks(months)
+plt.show()
+  28. Set the x-tick labels to be the month_names list.
+//
+plt.xlabel("Months")
+plt.ylabel("Conversion")
+ax = plt.subplot()
+plt.plot(months, conversion)
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+plt.show()
+  29. Set the y-ticks to be [0.10, 0.25, 0.5, 0.75].
+//
+plt.xlabel("Months")
+plt.ylabel("Conversion")
+ax = plt.subplot()
+plt.plot(months, conversion)
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+ax.set_yticks([0.10, 0.25, 0.5, 0.75])
+plt.show()
+  30. Label the y-ticks to be the percentages that correspond to the values [0.10, 0.25, 0.5, 0.75], instead of decimals.
+//
+plt.xlabel("Months")
+plt.ylabel("Conversion")
+ax = plt.subplot()
+plt.plot(months, conversion)
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+ax.set_yticks([0.10, 0.25, 0.5, 0.75])
+ax.set_yticklabels(['10%', '25%', '50%', '75%'])
+plt.show()
+
+                                      FIGURES
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+word_length = [8, 11, 12, 11, 13, 12, 9, 9, 7, 9]
+power_generated = [753.9, 768.8, 780.1, 763.7, 788.5, 782, 787.2, 806.4, 806.2, 798.9]
+years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009]
+  31. First, close all plots to make sure we have no lines already plotted that we’ve forgotten about.
+//
+plt.close('all')
+  32. Create a figure and plot word_length against years. This dataset represents the lengths of the winning words of the Scripps National Spelling Bee over 11 years. Save this 
+figure in a file called 'winning_word_lengths.png'.
+//
+plt.close('all')
+plt.plot(years, word_length)
+plt.show()
+plt.savefig('winning_word_lengths.png')
+  33. On the next line, create a figure with 7 inches of width and 3 inches of height and plot power_generated against years. This dataset represents the power generated by nuclear 
+plants in the United States over 11 years. Save this figure in a file called 'power_generated.png'.
+//
+plt.figure(figsize=(7,3))
+plt.plot(years, power_generated)
+plt.savefig('power_generated.png')
+plt.show()
+
+                                      REVIEW
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+  1. Define three lists, x, y1, and y2 and fill them with integers. These numbers can be anything you want, but it would be neat to have them be actual metrics that you want 
+to compare. This is a fun site you can look at to find example datasets to plot!
+//
+x = [2000,2001,2002,2003,2004,2005,2006]
+y1 = [380,394,400,415,390,374,356]
+y2 = [33,29,32,37,34,24,19]
+  2. Plot y1 vs x and display the plot.
+//
+plt.plot(x, y1)
+plt.show()
+  3. On the same graph, plot y2 vs x (after the line where you plot y1 vs x)
+//
+plt.plot(x, y1)
+plt.plot(x, y2)
+plt.show()
+  4. Make the y1 line a pink line and the y2 line a gray line. Give both lines round markers.
+//
+plt.plot(x, y1, color='pink', marker='o')
+plt.plot(x, y2, color='gray', marker='o')
+plt.show()
+  5. Give your graph a title of “Two Lines on One Graph”, and label the x-axis ”Amazing X-axis” and y-axis ”Incredible Y-axis”.
+//
+plt.plot(x, y1, color='pink', marker='o')
+plt.plot(x, y2, color='gray', marker='o')
+plt.title('Two Lines on One Graph')
+plt.xlabel('Amazing X-axis')
+plt.ylabel('Incredible Y-axis')
+plt.show()
+  6. Give the graph a legend and put it in the lower right.
+//
+plt.plot(x, y1, color='pink', marker='o')
+plt.plot(x, y2, color='gray', marker='o')
+plt.title('Two Lines on One Graph')
+plt.xlabel('Amazing X-axis')
+plt.ylabel('Incredible Y-axis')
+plt.legend(['Motor Vehicle Theft Rate', 'Disney Movies'], loc=4)
+plt.show()
+  7. Good job! Feel free to continue playing around in this space. Maybe make some subplots and separate out the lines. Maybe practice with zooming in on certain parts of the graph 
+or selecting certain x- or y-ticks to display. When you’re ready, run the code one last time and move on.
+//
+plt.sublot(1,2,1)
+plt.plot(x, y1, color='darkred', marker='o')
+plt.subplot(1,2,2)
+plt.plot(x, y2, color='green', marker='o')
+plt.show()
