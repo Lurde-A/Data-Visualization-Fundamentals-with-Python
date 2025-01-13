@@ -1,1 +1,238 @@
+                                      SIMPLE BAR CHART
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales =  [91, 76, 56, 66, 52, 27]
+  1. We are going to help the cafe MatplotSip analyze some of the sales data they have been collecting. In script.py, we have included a list of drink categories and a list of numbers 
+representing the sales of each drink over the past month. Use plt.bar to plot numbers of drinks sold on the y-axis. The x-values of the graph should just be the list [0, 1 ... , n-1], 
+where n is the number of categories (drinks) we are plotting. So at x=0, we’ll have the number of cappuccinos sold.
+  2. Show the plot and examine it. At this point, we can’t tell which bar corresponds to which drink, so this chart is not very helpful. We’ll fix this in the next section.
+//
+plt.bar(range(len(drinks)), sales)
+plt.show()
+
+                                      SIMPLE BAR CHART II
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales =  [91, 76, 56, 66, 52, 27]
+plt.bar(range(len(drinks)), sales)
+#create your ax object here
+plt.show()
+  3. The list drinks represents the drinks sold at MatplotSip. We are going to set x-tick labels on the chart you made with plt.bar in the last exercise. First, create the axes object 
+for the plot and store it in a variable called ax.
+//
+import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales =  [91, 76, 56, 66, 52, 27]
+plt.bar(range(len(drinks)), sales)
+#create your ax object here
+ax = plt.subplot()
+plt.show()
+  4. Set the x-axis ticks to be the numbers from 0 to the length of drinks.
+//
+...
+#create your ax object here
+ax = plt.subplot()
+ax.set_xticks(range(len(drinks)))
+plt.show()
+  5. Use the strings in the drinks list for the x-axis ticks of the plot you made with plt.bar.
+//
+...
+ax = plt.subplot()
+ax.set_xticks(range(len(drinks)))
+ax.set_xticklabels(drinks)
+plt.show()
+
+                                      SIDE-BY-SIDE BARS
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+#Paste the x_values code here
+plt.show()import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+#Paste the x_values code here
+plt.show()
+  6. The second location of MatplotSip recently opened up, and the owners want to compare the drink choices of the clientele at the two different locations. To do this, it will be 
+helpful to have the sales of each drink plotted on the same axes. We have provided sales2, a list of values representing the sales of the same drinks at the second MatplotSip location.
+  7. Paste the following code into script.py:
+n = ?  # This is our first dataset (out of 2)
+t = ? # Number of datasets
+d = ? # Number of sets of bars
+w = ? # Width of each bar
+x_values = [t*element + w*n for element
+             in range(d)]
+Update the ? with the correct values to generate your first set of x-values. Update x_values to be store1_x (this makes it more clear which set of x-values we are making).
+//
+n = 1  # This is our first dataset (out of 2)
+t = 2 # Number of datasets
+d = 6 # Number of sets of bars
+w = 0.8 # Width of each bar
+store1_x = [t*element + w*n for element
+             in range(d)]
+  8. Use the plt.bar to position the bars corresponding to sales1 on the plot. The x-values for plt.bar should be the store1_x list that you just created.
+//
+plt.bar(store1_x, sales1)
+  9. Once more, paste the following code into script.py:
+n = ?  # This is our second dataset (out of 2)
+t = ? # Number of datasets
+d = ? # Number of sets of bars
+w = ? # Width of each bar
+x_values = [t*element + w*n for element
+             in range(d)]
+Update the ? with the correct values to generate your second set of x-values. Update x_values to be store2_x (this makes it more clear which set of x-values we are making).
+//
+n = 2  # This is our second dataset (out of 2)
+t = 2 # Number of datasets
+d = 6 # Number of sets of bars
+w = 0.8 # Width of each bar
+store2_x = [t*element + w*n for element
+             in range(d)]
+  10. Call plt.bar again, with sales2 as the y-values and your store2_x list as the x-values.
+  11. Show the plot using plt.show().
+//
+plt.bar(store2_x, sales2)
+plt.show()
+
+                                      STACKED BARS
+  12. You just made a chart with two sets of sales data plotted side by side. Let’s instead make a stacked bar chart by using the keyword bottom. Put the sales1 bars on the bottom 
+and set the sales2 bars to start where the sales1 bars end.
+//
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+plt.bar(range(len(drinks)), sales1)
+plt.bar(range(len(drinks)), sales2, bottom=sales1)
+plt.show()
+  13. We should add a legend to make sure we know which set of bars corresponds to which location. Label the bottom set of bars as “Location 1” and the top set of bars as “Location 2”
+and add a legend to the chart.
+//
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+sales1 =  [91, 76, 56, 66, 52, 27]
+sales2 = [65, 82, 36, 68, 38, 40]
+plt.bar(range(len(drinks)), sales1, label="Loaction 1")
+plt.bar(range(len(drinks)), sales2, bottom=sales1, label="Loaction 2")
+plt.legend()
+#plt.legend(['Location 1' ,'Location 2']) <-- same results
+plt.show()
+
+                                      ERROR BARS
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+ounces_of_milk = [6, 9, 4, 0, 9, 0]
+error = [0.6, 0.9, 0.4, 0, 0.9, 0]
+# Plot the bar graph here
+plt.show()
+  14. For someone who is learning about the different drink types at MatplotSip, a bar chart of milk amounts in each drink may be useful. We have provided the ounces_of_milk list, 
+which contains the amount of milk in each 12oz drink in the drinks list. Plot this information as a bar chart.
+//
+import codecademylib
+from matplotlib import pyplot as plt
+drinks = ["cappuccino", "latte", "chai", "americano", "mocha", "espresso"]
+ounces_of_milk = [6, 9, 4, 0, 9, 0]
+error = [0.6, 0.9, 0.4, 0, 0.9, 0]
+# Plot the bar graph here
+plt.bar(range(len(drinks)), ounces_of_milk)
+plt.show()
+  15. According to different barista styles and measurement errors, there might be variation on how much milk actually goes into each drink. We’ve included a list error, with an 
+error of 10% on each amount of milk. Display this error as error bars on the bar graph.
+//
+plt.bar(range(len(drinks)), ounces_of_milk, yerr=error)
+plt.show()
+  16. Add caps of size 5 to your error bars.
+//
+plt.bar(range(len(drinks)), ounces_of_milk, yerr=error, capsize=5)
+plt.show()
+
+                                      FILL BETWEEN
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+months = range(12)
+month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+revenue = [16000, 14000, 17500, 19500, 21500, 21500, 22000, 23000, 20000, 19500, 18000, 16500]
+#your work here
+plt.show()
+  17. We have provided a set of data representing MatplotSip’s projected revenue per month for the next year in the variable revenue. Let’s plot these revenues against months as 
+a line in script.py.
+//
+plt.plot(months, revenue)
+plt.show()
+  18. Make an axis object, store it in the variable ax, and then use it to set the x-ticks to months and the x-axis tick labels to be the months of the year, given to you in 
+the variable month_names.
+//
+ax = plt.subplot()
+plt.plot(months, revenue)
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+plt.show()
+  19. This data is a projection of future revenue. We don’t know that this will be the revenue, but it’s an estimate based on the patterns of past years. We can say that the real 
+revenue will probably be plus or minus 10% of each value. Create a list containing the lower bound of the expected revenue for each month, and call it y_lower.
+Remember that 10% less than a number would be either:
+i - 0.1 * i or 0.9 * i
+You can use either of these in your list comprehension.
+//
+y_lower = [i - 0.1*i for i in revenue]
+  20. Create a list containing the upper bound of the expected revenue for each month, and call it y_upper. Remember that 10% more than a number would be either:
+i + 0.1 * i or 1.1 * i
+You can use either of these in your list comprehension.
+//
+y_lower = [i - 0.1*i for i in revenue]
+y_upper = [i + 0.1*i for i in revenue]
+  21. Use .fill_between() to shade the error above and below the line we’ve plotted, with an alpha of 0.2.
+//
+x = plt.subplot()
+plt.plot(months, revenue)
+ax.set_xticks(months)
+ax.set_xticklabels(month_names)
+plt.fill_between(months, y_lower, y_upper, alpha=0.2)
+plt.show()
+
+                                      PIE CHART
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+payment_method_names = ["Card Swipe", "Cash", "Apple Pay", "Other"]
+payment_method_freqs = [270, 77, 32, 11]
+  22. MatplotSip keeps track of how many people pay by credit card, cash, Apple pay, or other methods. This is given to you in the payment_method_names and payment_method_freqs lists.
+Display the payment_method_freqs list as a pie chart.
+//
+#make your pie chart here
+plt.pie(payment_method_freqs)
+plt.show()
+  23. Now, set the axes to be equal.
+//
+plt.pie(payment_method_freqs)
+plt.axis('equal')
+plt.show()
+
+                                      PIE CHART LABELING
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+payment_method_names = ["Card Swipe", "Cash", "Apple Pay", "Other"]
+payment_method_freqs = [270, 77, 32, 11]
+  24. Add a legend to the chart you made in the previous exercise by passing in a list of labels to plt.legend. For the labels, use the list payment_method_names.
+//
+plt.pie(payment_method_freqs)
+plt.axis('equal')
+plt.legend(payment_method_names)
+plt.show()
+  25. Add a percentage to each slice using Matplotlib’s autopct parameter. Go to one decimal point of precision.
+//
+plt.pie(payment_method_freqs, autopct='%0.1f%%')
+
+                                      HISTOGRAM
+  26. 
 
