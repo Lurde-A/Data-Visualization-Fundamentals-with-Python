@@ -65,4 +65,77 @@ def create_x(t, w, n, d):
 plt.show()
   1. Using create_x, make the lists school_a_x and school_b_x which will determine where to put the bars for Middle School A and Middle School B along the x-axis
 //
-            
+# Make your chart here
+t = 2 # Number of datasets in total
+w = 0.8 # width of each bar
+n = 1 # First dataset
+d = 5 # Number of bars' sets
+school_a_x = [t*x + w*n for x in range(d)]
+t = 2 # Number of datasets in total
+w = 0.8 # width of each bar
+n = 2 # Second dataset
+d = 5 # Number of bars' sets
+school_b_x = [t*x + w*n for x in range(d)]
+  2. Create a figure of width 10 and height 8.
+//
+plt.figure(figsize=(10,8))
+plt.show()
+  3. Create a set of axes and save them to ax.
+//
+ax=plt.subplot()
+plt.show()
+  4. Plot a set of bars representing middle_school_a and a set representing middle_school_b next to each other on the same graph.
+//
+plt.bar(school_a_x, middle_school_a)
+plt.bar(school_b_x, middle_school_b)
+plt.show()
+  5. Create a new list of x-values called middle_x, which are the values in the middle of school_a_x and school_b_x. This is where we will place the x-ticks. Look at the final graph 
+to see this placement.
+//
+middle_x = [(a + b / 2.0) for a,b in zip(school_a_x, school_b_x)]
+plt.show()
+  6. Set the x-ticks to be the middle_x list.
+  7. Set the x-tick labels to be the list unit_topics.
+//
+ax.set_xticks(middle_x)
+ax.set_xticklabels(unit_topics)
+plt.show()
+  8. Create a legend, as shown in the final graph, that labels the first set of bars Middle School A and the second set of bars Middle School B.
+//
+ax.xticks(middle_x)
+ax.set_xticklabels(unit_topics)
+plt.legend(['Middle School A', 'Middle School B'])
+plt.show()
+  9. Create a title (“Test Averages on Different Units”), x-axis label (“Unit”), and y-axis label (“Test Average”).
+  10. Save your figure to a file called my_side_by_side.png
+//
+ax.set_xticks(middle_x)
+ax.set_xticklabels(unit_topics)
+plt.legend(['Middle School A', 'Middle School B'])
+plt.title('Test Averages on Different Units')
+plt.xlabel('Unit')
+plt.ylabel('Test Average')
+plt.savefig('my_side_by_side.png')
+plt.show()
+
+                                STACKED BARS
+GIVEN:
+import codecademylib
+from matplotlib import pyplot as plt
+import numpy as np
+unit_topics = ['Limits', 'Derivatives', 'Integrals', 'Diff Eq', 'Applications']
+As = [6, 3, 4, 3, 5]
+Bs = [8, 12, 8, 9, 10]
+Cs = [13, 12, 15, 13, 14]
+Ds = [2, 3, 3, 2, 1]
+Fs = [1, 0, 0, 3, 0]
+x = range(5)
+c_bottom = np.add(As, Bs)
+#create d_bottom and f_bottom here
+#create your plot here
+plt.show()
+  1. The Bs bars will go on top of the As bars, but at what heights will the Cs, Ds, and Fs bars start? The bottom of the bars representing the Cs will be at the height of the As 
+plus the Bs. We can do this in NumPy (a scientific computing package for Python) with the np.add function. c_bottom, the starting heights for the Cs, will be:
+c_bottom = np.add(As, Bs)
+Underneath the definition of c_bottom, define d_bottom (where the Cs end), and f_bottom (where the Ds end).
+//
