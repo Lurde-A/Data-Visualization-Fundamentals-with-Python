@@ -139,3 +139,40 @@ plus the Bs. We can do this in NumPy (a scientific computing package for Python)
 c_bottom = np.add(As, Bs)
 Underneath the definition of c_bottom, define d_bottom (where the Cs end), and f_bottom (where the Ds end).
 //
+#create d_bottom and f_bottom here
+d_bottom = np.add(c_bottom, Cs)
+f_bottom = np.add(d_bottom, Ds)
+  2. Create a figure of width 10 and height 8.
+//
+plt.figure(figsize=(10,8))
+  3. Plot the As, Bs, Cs, Ds, and Fs. Give each one the appropriate bottom list that will stack them on top of each other.
+//
+plt.figure(figsize=(10,8))
+plt.bar(range(len(As)), As)
+plt.bar(range(len(As)), Bs, bottom=As)
+plt.bar(range(len(As)), Cs, bottom=c_bottom)
+plt.bar(range(len(As)), Ds, bottom=d_bottom)
+plt.bar(range(len(As)), Fs, bottom=f_bottom)
+  4. Create a set of axes and save them to ax.
+//
+ax = plt.subplot()
+  5. Set the x-ticks to be range(len(unit_topics)).
+//
+ax.set_xticks(range(len(unit_topics)))
+  6. Set the x-tick labels to be the unit_topics.
+//
+ax.set_xticklabels(unit_topics)
+  7. Give the plot the title you see in the final graph, and the same x-axis label and y-axis label.
+//
+plt.title('Grade distribution')
+plt.xlabel('Unit')
+plt.ylabel('Number of Students')
+  8. Save your figure to a file called my_stacked_bar.png.
+//
+plt.title('Grade distribution')
+plt.xlabel('Unit')
+plt.ylabel('Number of Students')
+plt.savefig('my_stacked_bar.png')
+
+                                TWO HISTOGRAMS ON A PLOT
+  1. 
