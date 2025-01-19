@@ -88,7 +88,7 @@ doesn’t have a supportive environment?
 //
 sns.countplot(df['Supportive Environment'], order = value_order)
 
-                                      PIE CHARTS
+                                      PLOTTING PIE CHARTS USING MATPLOTLIB
 GIVEN:
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -120,4 +120,82 @@ plt.axis('equal')
 plt.title('Distribution of House Water Usage')
 plt.show()
 
-                                      P
+                                      PITFALLS OF PIE CHARTS
+GIVEN:
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import codecademylib3
+pie_data = pd.read_csv("pie_data.csv")
+graph_counts = pie_data["values"]
+graph_labels = pie_data["labels"]
+plt.subplot(1,2,1)
+plt.pie(graph_counts, labels = graph_labels)
+plt.axis('Equal')
+plt.title("Tough to Compare")
+plt.subplot(1,2,2)
+#sns.barplot()
+#plt.title("Easy to Compare")
+plt.show()
+  11. In plot.py, code to create a pie chart has already been written. Run the code to look at the pie chart. You will also see a blank graph next to it. Do not worry about it for now.
+What do you notice about this pie chart? Could you identify what the largest and smallest wedges are without looking at the data?
+//
+No.
+  12. On lines 18 and 19 of plot.py you should see two lines of code commented out.
+#sns.barplot()
+#plt.title("Easier to Compare")
+We are going to use the .barplot() seaborn method to display our data on a bar chart. To do this:
+Uncomment the line with sns.barplot().
+Input graph_labels as the first argument in the barplot() method.
+Input graph_counts as the second argument.
+Uncomment line 19 as well, but do not touch the rest of the code.
+When you run the code, you should see five bars appear in the empty graph. What do you notice about the bar chart when comparing it with the pie chart? Is it still difficult to compare 
+the values of each category?
+//
+plt.subplot(1,2,2)
+sns.barplot(graph_labels, graph_counts)
+plt.title("Easy to Compare")
+plt.show()
+
+                                      MAKING YOUR PIE CHART BETTER
+GIVEN:
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import codecademylib3
+major_data = pd.read_csv("major_data.csv")
+print(major_data.head())
+major_data_agg = pd.read_csv("major_data_agg.csv")
+print(major_data_agg.head())
+pie_wedges = major_data["proportion"]
+pie_labels = major_data["major"]
+pie_wedges_agg = major_data_agg["proportion"]
+pie_labels_agg = major_data_agg["department"]
+plt.subplot(2,1,1)
+plt.pie(pie_wedges, labels = pie_labels)
+plt.axis('Equal')
+plt.title("Too Many Slices")
+plt.tight_layout()
+plt.subplot(2,1,2)
+#plt.pie()
+plt.axis('Equal')
+#plt.title("Good Number of Slices")
+plt.tight_layout()
+plt.show()
+  13. In plot.py, we have the code to create the pie chart of college major distributions. You should see the pie chart with the title “Too Many Slices” along with a blank chart below it 
+(ignore for now) in the browser. Note, you may have to scroll below the previewed tables in the browser.
+Two datasets: major_data.csv and major_data_agg.csv are imported and saved to the following variables:
+pie_wedges (wedge sizes for major_data.csv)
+pie_labels (labels for major_data.csv)
+pie_wedges_agg (wedge sizes for major_data_agg.csv)
+pie_labels_agg (labels for major_data_agg.csv)
+Currently, only major_data is plotted with a pie chart. We are going to plot major_data_agg now using pie_wedges_agg and pie_labels_agg. We set up the code to plot these pandas DataFrames:
+Uncomment lines 25 and 27 of plot.py.
+Using the .pie() method on line 25, plot pie_wedges_agg and pie_labels_agg.
+//
+plt.subplot(2,1,2)
+plt.pie(pie_wedges_agg, labels=pie_labels_agg)
+plt.axis('Equal')
+plt.title("Good Number of Slices")
+plt.tight_layout()
+plt.show()
