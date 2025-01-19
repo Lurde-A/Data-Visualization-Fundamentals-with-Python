@@ -1,1 +1,123 @@
+                                      INTRODUCTION TO BAR CHARTS
+GIVEN:
+import codecademylib3
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+# add in your answers here!
+left_plot = "answer here!"
+right_plot = "answer_here!"
+heroes_data = pd.read_csv("heroes_information.csv")
+# line of code used to clean up messy data
+heroes_data_cleaned = heroes_data[heroes_data.Alignment != "-"]
+#### code for left plot
+plt.subplot(1, 2, 1)
+sns.countplot(heroes_data_cleaned["Alignment"])
+#### code for right plot
+plt.subplot(1, 2, 2)
+sns.histplot(heroes_data_cleaned["Height"])
+plt.xlim(0,500)
+plt.show()
+  1. In plot.py, we have written up some code to create a bar chart and a histogram using data about superheroes from heroes_information.csv. You should see both plots in the web browser 
+on the far right. There are two variables on lines 7 and 8 of plot.py:
+left_plot: corresponds to the plot on the left side of the web browser.
+right_plot: correspond to the plot on the right side of the web browser.
+For each variable, choose whether you believe it is a bar chart or histogram by setting it equal to either "Bar Chart" or "Histogram" where it says "answer here!".
+//
+left_plot = "Bar Chart"
+right_plot = "Histogram"
 
+                                      PLOTTING BAR CHARTS USING SEABORN
+GIVEN:
+import codecademylib3
+import pandas as pd 
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv("games.csv")
+print(df.head())
+  2. Let’s practice plotting our own bar chart. In plot.py, there is a csv file loaded called games.csv. This dataset contains information about various chess games, including:
+Number of turns the game took
+Ending result (checkmate/draw/resign)
+Who won (player with white pieces or black pieces)
+Other variables
+Feel free to read more about the dataset here. Click run to see the first five rows of the file. Which categories would be useful to visualize with a .countplot() method?
+//
+For example - winner, rated, victory_status categories. 
+  3. Plot the counts of each value in victory_status using the .countplot() method. Be sure to show your plot after using the method.
+//
+sns.countplot(df['victory_status'])
+plt.show()
+
+                                      BAR CHART ORDERING
+GIVEN:
+import codecademylib3
+import pandas as pd 
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv("school_data.csv")
+print(df.head())
+value_order = ["NOT ENOUGH DATA", "VERY WEAK", "WEAK", "NEUTRAL", "STRONG", "VERY STRONG"]
+type_of_data = "fill in here"
+# plot using .countplot() method here
+# plt.xticks(rotation=30)
+# show your plot here
+  4. In the plot.py file, we have imported a dataset called school_data.csv and previewed it in the browser. This file contains data about schools in the Chicago, Illinois area.
+We are going to look at a column called Supportive Environment which documents how various schools in the area rate in terms of supportiveness with the following values:
+NOT ENOUGH DATA
+VERY WEAK
+WEAK
+NEUTRAL
+STRONG
+VERY STRONG
+Before we plot, determine whether this column of data is ordinal or nominal.
+Fill in your answer as "nominal" or "ordinal" in the variable type_of_data on line 10.
+//
+type_of_data = "ordinal"
+  5. Graph the Supportive Environment column using the .countplot() method. You may notice the following line of code that is commented out:
+plt.xticks(rotation=30)
+Uncomment this line of code. It is a Matplotlib method that will rotate your labels along the x-axis to make sure they are visible. For it to work, be sure to call .countplot() above it.
+Lastly, make sure you call plt.show() after both the .countplot() and .xticks() method.
+//
+sns.countplot(df['Supportive Environment'])
+plt.xticks(rotation=30)
+plt.show()
+  6. Let’s order the labels on the x-axis, putting NOT ENOUGH DATA on the far left and VERY STRONG on the far right. We have conveniently put the order of the labels in a variable called 
+value_order for you. Add the order parameter into your existing .countplot() method, and use value_order to order the bars accordingly. After plotting the order parameter, you should get 
+a better sense of the distribution of the ordinal data. What is the mode of this data, and what does it tell us? Do more students believe that their school has a supportive environment or 
+doesn’t have a supportive environment?
+//
+sns.countplot(df['Supportive Environment'], order = value_order)
+
+                                      PIE CHARTS
+GIVEN:
+import matplotlib.pyplot as plt
+import pandas as pd
+import codecademylib3
+water_usage = pd.read_csv("water_usage.csv")
+print(water_usage.head())
+  7. In pie_chart.py, we have loaded in a dataset called water_usage.csv and previewed it in the browser. Create two variables:
+wedge_sizes should contain the data in the prop column.
+pie_labels should contain the data in the water_source column.
+//
+wedge_sizes = water_usage.prop
+pie_labels = water_usage.water_source
+  8. Plot the water usage distribution using wedge_sizes and pie_labels. Show the plot. What do you notice about it?
+//
+plt.pie(wedge_sizes, labels=pie_labels)
+plt.axis('equal')
+plt.show()
+  9. Currently, our pie chart is warped — it is wider than it is tall. Let’s fix this by using the .axis() Matplotlib method. Finally, let’s title our plot “Distribution of House Water 
+Usage” to complete it! Be sure to use call both of these methods before the plt.show() line of code. Otherwise, they will not make any changes to the chart.
+//
+plt.pie(wedge_sizes, labels=pie_labels)
+plt.axis('equal')
+plt.show()
+  10. Currently, our pie chart is warped — it is wider than it is tall. Let’s fix this by using the .axis() Matplotlib method. Finally, let’s title our plot “Distribution of House Water 
+Usage” to complete it! Be sure to use call both of these methods before the plt.show() line of code. Otherwise, they will not make any changes to the chart.
+//
+plt.pie(wedge_sizes, labels=pie_labels)
+plt.axis('equal')
+plt.title('Distribution of House Water Usage')
+plt.show()
+
+                                      P
