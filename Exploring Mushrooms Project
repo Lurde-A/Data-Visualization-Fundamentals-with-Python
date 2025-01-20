@@ -1,3 +1,13 @@
+GIVEN:
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import codecademylib3
+# load in the data
+df = pd.read_csv("mushroom_data.csv")
+print(df.head())
+# list of all column headers
+columns = df.columns.tolist()
                                       LOOKING OVER THE DATA
   1. Before you move on to plotting any of this data, answer the following questions: What type(s) of variables does mushroom_data.csv contain? How many of the variables can we visualize 
 effectively with a bar graph? Click the hint to see our answers.
@@ -5,4 +15,54 @@ effectively with a bar graph? Click the hint to see our answers.
 All variables are Categorical.
 
                                       PLOTTING BAR GRAPHS
-  2. 
+  2. There are 23 variables in this dataset (one for each column). Graphing each one individually would be tedious; luckily, you will use loops. If you look at plot.py, you will see 
+an attribute called columns. This attribute returns the name of each variable in mushroom_data.csv.
+Create a loop that traverses each column in the columns list.
+Print each column in columns while iterating through the loop. This is to check that your for loop is working correctly.
+//
+columns = df.columns.tolist()
+for column in columns:
+  print(column)
+  3. In the terminal, you should see 23 column names pop up starting with class and ending with habitat. Great! Your for loop is working, so feel free to comment out your print statement.
+You can now plot your data using the .countplot() method from the seaborn library. Follow these steps: 
+Call .countplot() in the for loop
+Use column and the df pandas DataFrame to graph the value counts of each variable in mushroom_data.csv. Please wait until the next task to use plt.show(). Since you are creating 23 plots 
+in the browser, you will need an additional line of code.
+//
+for column in columns:
+  print(column)
+  sns.countplot(df[column])
+  4. At the end of your for loop, add the following lines of code to show your plots: 
+plt.show() 
+plt.clf()
+The .show() Matplotlib method should look familiar from previous lesson, but .clf() might be unfamiliar. This method is also from the Matplotlib library. It clears any previous figure 
+formatting. This will keep any graphs you are plotting from bunching up on each other. Instead, your plots will be neatly stacked on top of each other will spacing ideal for viewing.
+//
+for column in columns:
+  print(column)
+  sns.countplot(df[column])
+  plt.show()
+  plt.clf()
+  5. After using plt.show() and plt.clf(), 23 plots should appear in the web browser on the right. We recommend that you click this button in the top right of the web browser to expand 
+it for best viewing:
+Fullscreen icon that sits in the top right of the learning environnment
+Scroll through each of the graphs, and see what sort of trends you immediately see.
+What variables have an obvious mode?
+Do any of them have a notably diverse array of values?
+What habitat are you most likely to find mushrooms in?
+What questions did you have before seeing the graphs? What questions are popping up now that you see them? When you want to go back to your original view of the code editor and tasks, click 
+the icon again. Feel free to do this throughout the project if you want to take a closer look at your graphs and want to continue your analysis! In the next few steps, you will clean up 
+the graphs and make them more readable and useful for finding patterns.
+
+                                      CLEANING THE BAR GRAPHS
+  6. As you scroll through the graphs, you may notice some imperfections. For example, some of the x-axis labels overlap each other. The font size for the labels along the x-axis is also 
+pretty small, making them tough to read. Let’s fix these up with two lines of code. Following your .countplot() method, add the following two lines of code in your for loop:
+# rotates the value labels slightly so they don’t overlap, also slightly increases font size
+plt.xticks(rotation=30, fontsize=10)
+# increases the variable label font size slightly to increase readability
+plt.xlabel(column, fontsize=12)
+Click the hint to check the code in your for loop up to this point.
+//
+
+
+
