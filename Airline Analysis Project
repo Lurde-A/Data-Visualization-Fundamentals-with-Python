@@ -17,7 +17,7 @@ print(flight.head())                        RESULT:
                                             4	967	  217	        0	    Yes	          Yes	                    Yes	          Monday	    No	    No	    374.735	    1245.58          	2
   1. What do coach ticket prices look like? What are the high and low values? What would be considered average? Does $500 seem like a good price for a coach ticket?
 //
-print(len(flight))
+print(len(flight))                                                                    RESULT: 129780
 print('The minimum price: ' + str(flight['coach_price'].min()))                       RESULT: "The minimum price: 44.415"
 print('The maximum price: ' + str(flight['coach_price'].max()))                       RESULT: "The maximum price: 593.635"
 print('The average price: ' + str(flight['coach_price'].mean()))                      RESULT: "The average price: 376.58525308213905"
@@ -31,4 +31,37 @@ plt.clf()
 sns.boxplot(x='coach_price', data=flight)
 plt.show()
 plt.clf()
-  2. 
+  2. Now visualize the coach ticket prices for flights that are 8 hours long. What are the high, low, and average prices for 8-hour-long flights? Does a $500 ticket seem more reasonable 
+than before?
+//
+flight2 = flight[flight.hours == 8]
+print(len(flight2))                                                                    RESULT: 2634
+print('The minimum price: ' + str(flight2['coach_price'].min()))                       RESULT: "The minimum price: 170.77"
+print('The maximum price: ' + str(flight2['coach_price'].max()))                       RESULT: "The maximum price: 593.635"
+print('The average price: ' + str(flight2['coach_price'].mean()))                      RESULT: "The average price: 431.834377372817"
+print('The median price: ' + str(flight2['coach_price'].median()))                     RESULT: "The median price: 437.115"
+plt.hist(flight2.coach_price, 
+bins=20)
+plt.show()
+plt.clf()
+sns.boxplot(x='coach_price', 
+data=flight2)
+plt.show()
+plt.clf()
+  3. How are flight delay times distributed? Let’s say there is a short amount of time between two connecting flights, and a flight delay would put the client at risk of missing their 
+connecting flight. You want to better understand how often there are large delays so you can correctly set up connecting flights. What kinds of delays are typical?
+//
+plt.hist(flight.delay[ flight.delay < 50], bins=30)
+plt.show()
+plt.clf()
+  4. Create a visualization that shows the relationship between coach and first-class prices. What is the relationship between these two prices? Do flights with higher coach prices always 
+have higher first-class prices as well?
+//
+perc = 0.1
+flight_sam = flight.sample(n = int(flight.shape[0]*perc))
+sns.lmplot(x = 'coach_price', y = 'firstclass_price', data = flight_sam, line_kws={'color': 'black'}, lowess=True)
+plt.show()
+plt.clf()
+  5. What is the relationship between coach prices and inflight features— inflight meal, inflight entertainment, and inflight WiFi? Which features are associated with the highest increase 
+in price?
+//
