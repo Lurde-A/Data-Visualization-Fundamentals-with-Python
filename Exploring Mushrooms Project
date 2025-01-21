@@ -63,6 +63,59 @@ plt.xticks(rotation=30, fontsize=10)
 plt.xlabel(column, fontsize=12)
 Click the hint to check the code in your for loop up to this point.
 //
+columns = df.columns.tolist()
+for column in columns:
+  print(column)
+  sns.countplot(df[column])
+  plt.xticks(rotation=30, fontsize=10)
+  plt.xlabel(column, fontsize=12)
+  plt.show()
+  plt.clf()
+  7. One more thing you can do to increase readability is to add an informative title. Using .title() from the Matplotlib library, give your graph the following title:
+{Variable Name} Value Counts
+Use column to capture each variable name. Be sure to call this method after .countplot() inside of your for loop.
+//
+columns = df.columns.tolist()
+for column in columns:
+  print(column)
+  sns.countplot(df[column])
+  plt.xticks(rotation=30, fontsize=10)
+  plt.xlabel(column, fontsize=12)
+  plt.title(str(column)+' Value Counts')
+  plt.show()
+  plt.clf()
+
+                                      ORDERING THE BARS FOR ANALYSIS
+  8. The graphs are readable, but you can take it another step further. Add the order parameter to your .countplot() method. Set this parameter so that the value counts in each column are 
+in descending order. You will need to use the .value_counts() pandas method and the .index pandas object.
+//
+columns = df.columns.tolist()
+for column in columns:
+  print(column)
+  sns.countplot(df[column], order=df[column].value_counts().index)
+  plt.xticks(rotation=30, fontsize=10)
+  plt.xlabel(column, fontsize=12)
+  plt.title(str(column)+' Value Counts')
+  plt.show()
+  plt.clf()
+  9. Great job! In relatively few lines of code, you have created 23 informative plots. Now that they are titled, labeled clearly, and ordered, you can really dive in on your analysis.
+Think about how someone could best use these visualizations. It is easy to tell which features of mushrooms are common and rare, and we get insights into the variety of mushrooms in 
+the fungi kingdom. Spend some time looking over the graphs. Write down exciting insights you find. Here are some examples to get you started:
+It is a roughly equal split between mushrooms that are edible vs. poisonous.
+The majority of mushrooms in this dataset have a scaly surface.
+There are a non-insignificant amount of mushrooms that give off an almond scent?!!!
+Most top surfaces of mushrooms in this dataset are scaly rather than smooth. Some of your analysis may also require research into mushroom features for any of the x-labels. We hope you 
+enjoy continuing to explore the world of these fun guys!
+
+                                      EXTENSIONS
+  1. Turn any bar graph with less than six bars into a pie chart (hint: use a conditional statement!)
+//
+plt.pie(df['Stalk Surface Above Ring'].value_counts(), labels=df['Stalk Surface Above Ring'].value_counts().index, autopct='%0.1f%%')
+plt.axis('equal')
+plt.show()
+
+
+
 
 
 
