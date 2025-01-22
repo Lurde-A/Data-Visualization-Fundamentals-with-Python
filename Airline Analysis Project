@@ -94,3 +94,10 @@ plt.clf()
 //
 sns.boxplot(x='day_of_week', y='coach_price', hue='redeye', data=flight, palette='Accent')
 plt.show()
+
+  Additional - heatmap:
+//
+colors = sns.diverging_palette(150, 275, s=80, l=55, n=9, as_cmap=True)
+sns.heatmap(flight.corr(), center=0, cmap=colors, robust=True)
+plt.show()
+plt.clf()
