@@ -15,6 +15,8 @@ print(flight.head())                        RESULT:
                                             2	1832	212	        0	    No	          Yes                    	No	          Friday	    No	    Yes	    351.96	    1429.86	          3
                                             3	925	  213	        0	    No	          Yes                    	Yes	          Saturday  	No	    Yes	    387.835	    1558.76	          2
                                             4	967	  217	        0	    Yes	          Yes	                    Yes	          Monday	    No	    No	    374.735	    1245.58          	2
+
+                                                UNIVARIATE ANALYSIS
   1. What do coach ticket prices look like? What are the high and low values? What would be considered average? Does $500 seem like a good price for a coach ticket?
 //
 print(len(flight))                                                                    RESULT: 129780
@@ -54,6 +56,8 @@ connecting flight. You want to better understand how often there are large delay
 plt.hist(flight.delay[ flight.delay < 50], bins=30)
 plt.show()
 plt.clf()
+
+                                                BIVARIATE ANALYSIS
   4. Create a visualization that shows the relationship between coach and first-class prices. What is the relationship between these two prices? Do flights with higher coach prices always 
 have higher first-class prices as well?
 //
@@ -65,3 +69,28 @@ plt.clf()
   5. What is the relationship between coach prices and inflight features— inflight meal, inflight entertainment, and inflight WiFi? Which features are associated with the highest increase 
 in price?
 //
+sns.histplot(flight, x='coach_price', hue = flight.inflight_meal, alpha=0.8)
+plt.show()
+plt.clf()
+sns.histplot(flight, x='coach_price', hue = flight.inflight_entertainment, alpha=0.8) 
+plt.show()
+plt.clf()
+sns.histplot(flight, x='coach_price', hue = flight.inflight_wifi, alpha=0.8) 
+plt.show()
+plt.clf()
+  6. How does the number of passengers change in relation to the length of flights?
+//
+sns.lmplot(x = 'hours', y = 'passengers', data = flight_sam, line_kws={'color': 'black'}, x_jitter = 0.3, scatter_kws={"s": 5, "alpha":0.2}, fit_reg = False)
+plt.show()
+plt.clf()
+
+                                                MULTIVARIATE ANALYSIS
+  7. Visualize the relationship between coach and first-class prices on weekends compared to weekdays.
+//
+sns.lmplot(x ='coach_price', y='firstclass_price', hue = 'weekend', data = flight_sam, fit_reg= False)
+plt.show()
+plt.clf()
+  8. How do coach prices differ for redeyes and non-redeyes on each day of the week?
+//
+sns.boxplot(x='day_of_week', y='coach_price', hue='redeye', data=flight, palette='Accent')
+plt.show()
